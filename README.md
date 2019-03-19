@@ -1,4 +1,4 @@
-# PrivateLearn (UNDER CONSTRUCTION)
+# PrivateLearn (UNDER CONSTRUCTION, plan to finish supporting sgx toolchain before April 1st)
 
 first change tensorflow path to your path in WORKSPACE
 
