@@ -1,4 +1,6 @@
 # PrivateLearn
+UNDER CONSTRUCTION
+
 
 first change tensorflow path to your path in WORKSPACE
 
