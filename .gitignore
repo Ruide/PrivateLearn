@@ -1,5 +1,6 @@
 /bazel*/*
 bazel*
+/quickstart/*
 /gcc-gcc-7_3_0-release/*
 demo_enclave_deps_graph.txt
 /binutils-2.24/*
