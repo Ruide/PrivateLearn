@@ -1,9 +1,10 @@
-bazel*/
-gcc-gcc-7_3_0-release/*
+/bazel*/*
+bazel*
+/gcc-gcc-7_3_0-release/*
 demo_enclave_deps_graph.txt
-_build/*
-sgx_release_enclaves/*
-newlib-2.5.0.20170922/*
+/binutils-2.24/*
+/_build/*
+/newlib-2.5.0.20170922/*
 *a
 # Compiled source #
 ###################
