@@ -25,6 +25,7 @@ And at the same time, I will trim the BUILD files related to c_api and get rid o
 
 
 LOG:
+
 I currently am able to create the dataflow model i want out from tensorflow high level api. And I get the .pb file prepared for transmitting inside enclave.
 
 My plan is to port the c or c++ backend into enclave. And use that backend to read the .pb file and start training. In my imagination, it should work like https://gist.github.com/asimshankar/7c9f8a9b04323e93bb217109da8c7ad2. 
