@@ -1,19 +1,11 @@
 # PrivateLearn (UNDER CONSTRUCTION, plan to finish supporting sgx toolchain before April 1st)
 
-first change tensorflow path to your path in WORKSPACE
-
-E.g. My path is as following
-
-local_repository(
-    name = "org_tensorflow",
-    path = "/home/rd/tensorflow",
-)
-
 
 High level plan:
-1. Use tensorflow code to generate .pb file
+1. Use tensorflow differential privacy added code to generate .pb file
 2. build c api using asylo sgx toolchain
 3. pass .pb file into enclave and use c api to start learning process
+*. encryption for entering and leaving asylo enclave boundary
 
 
 FINISHED:
@@ -49,3 +41,16 @@ https://github.com/tensorflow/privacy. Their adding differential privacy module 
 
 Tensorflow backend Reference:
 https://gist.github.com/asimshankar/7c9f8a9b04323e93bb217109da8c7ad2. Split backend out and load dataflow graph .pb file and start learning.
+
+To reproduce:
+
+first change tensorflow path to your path in WORKSPACE
+
+E.g. My path is as following
+
+local_repository(
+    name = "org_tensorflow",
+    path = "/home/rd/tensorflow",
+)
+
+Bazel build --config=enc-sim /hello_world:hello_world
