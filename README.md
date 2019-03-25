@@ -1,30 +1,13 @@
-# PrivateLearn (UNDER CONSTRUCTION, plan to finish supporting sgx toolchain before April 1st)
+## PrivateLearn (UNDER CONSTRUCTION, CANNOT BUILD YET)
 
 
-High level plan:
-1. Use tensorflow differential privacy added code to generate .pb file
-2. build c api using asylo sgx toolchain
+# High level idea:
+1. Use tensorflow highlevel python api with differential privacy added to generate .pb file (this is the dataflow graph embedded in protocolbuf)
+2. build c api using asylo sgx toolchain and adding it to enclave runtime support
 3. pass .pb file into enclave and use c api to start learning process
 (encryption for entering and leaving asylo enclave boundary)
 
-
-FINISHED:
-
-Learn the software stack of Tensorflow and select out what to port into enclave.
-Turns out Tensorflow use high level Python code to generate dataflow graph and send the dataflow graph to low level worker code. Low level worker code will start learning using the received dataflow graph. Thus, for PrivateLearn, we need to port necessary low level c/c++ api into enclave.
-
-Modify WORKSPACE in Ayslo Bazel build system to include Tensorflow as an externel dependencies. Because Bazel does not support package well yet, so need to add transitive dependencies manually.
-
-
-TODO:
-
-Now working on using Asylo SGX enclave toolchain to build c/c++ api of tensorflow and include into enclave runtime. Because the toolchain for building enclave dynamic library miss a good number of runtime support, now I will have to get ridof the missing headers and provide workarounds to deal with the side effects of getting rid of these headers.
-
-And at the same time, I will trim the BUILD files related to c_api and get rid of the unnecessary features so that I can get around several missing posix call errors.
-
-
-
-LOG:
+# Detail idea:
 
 I currently am able to create the dataflow model i want out from tensorflow high level api. And I get the .pb file prepared for transmitting inside enclave.
 
@@ -57,3 +40,21 @@ local_repository(
 )
 
 Bazel build --config=enc-sim /hello_world:hello_world
+
+
+# FINISHED:
+
+1. Learn the software stack of Tensorflow and select out what to port into enclave. Turns out Tensorflow use high level Python code to generate dataflow graph and send the dataflow graph to low level worker code. Low level worker code will start learning using the received dataflow graph. Thus, for PrivateLearn, we need to port necessary low level c/c++ api into enclave.
+
+2. Modify WORKSPACE in Ayslo Bazel build system to include Tensorflow as an externel dependencies. Because Bazel does not support package well yet, so need to add transitive dependencies manually.
+
+
+# TODO:
+
+1. Now working on using Asylo SGX enclave toolchain to build c/c++ api of tensorflow and include into enclave runtime. Because the toolchain for building enclave dynamic library miss a good number of runtime support, now I will have to get ridof the missing headers and provide workarounds to deal with the side effects of getting rid of these headers.
+
+2. And at the same time, I will trim the BUILD files related to c_api and get rid of the unnecessary features so that I can get around several missing posix call errors.
+
+
+
+
